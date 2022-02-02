@@ -15,6 +15,14 @@ contract Token{
         owner=msg.sender;
     }
 
+    receive() external payable{
+        console.log("**** I AM IN RECEIVE");
+    }
+    
+    fallback() external payable{
+        console.log("**** I AM IN FALLBACK");
+    }
+
     function transfer(address to, uint amount) external{
         require(balances[msg.sender]>=amount, "Insufficient tokens");
 
